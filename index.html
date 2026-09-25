@@ -2,429 +2,847 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Grand Horizon | Luxury Dining & Suites</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>The Imperial Palace | 7-Star Ultra Luxury Resort</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #d4af37;
-      --gold-light: #f3e5ab;
-      --gold-dark: #aa820a;
-      --dark-bg: #0d0e11;
-      --card-bg: rgba(22, 24, 29, 0.85);
-      --text-muted: #a6abb4;
-      --text-main: #f5f6f8;
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Montserrat', sans-serif;
+      --bg: #07080b;
+      --surface: #10121a;
+      --card: #151824;
+      --gold: #c5a059;
+      --gold-bright: #f0cf85;
+      --gold-gradient: linear-gradient(135deg, #f0cf85 0%, #c5a059 50%, #9e7b36 100%);
+      --text: #f0f2f7;
+      --text-muted: #9aa1b2;
+      --border: rgba(197, 160, 89, 0.25);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    body {
-      background-color: var(--dark-bg);
-      color: var(--text-main);
-      font-family: var(--font-sans);
+    html, body {
+      width: 100%;
       overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
-    /* Subtle Luxury Background Glow */
-    body::before {
-      content: "";
-      position: fixed;
-      top: -20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
+    h1, h2, h3, h4, .brand {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1.5px;
     }
 
-    /* Navigation */
-    nav {
-      position: sticky;
+    /* Fixed Glass Header */
+    header {
+      position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      backdrop-filter: blur(12px);
-      background: rgba(13, 14, 17, 0.85);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      z-index: 1000;
+      background: rgba(7, 8, 11, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 8%;
-      z-index: 100;
     }
 
     .brand {
-      font-family: var(--font-serif);
-      font-size: 1.8rem;
-      letter-spacing: 3px;
-      color: var(--gold-light);
+      font-size: 1.25rem;
+      font-weight: 800;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-transform: uppercase;
-      font-weight: 700;
     }
 
-    .nav-actions {
+    .header-actions {
       display: flex;
-      gap: 1rem;
+      gap: 0.6rem;
+      align-items: center;
     }
 
     .btn {
-      text-decoration: none;
-      padding: 0.65rem 1.4rem;
-      font-size: 0.85rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 4px;
-      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      transition: all 0.25s ease;
+      border: none;
     }
 
     .btn-gold {
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      background: var(--gold-gradient);
       color: #0b0c0e;
-      border: 1px solid var(--gold);
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(197, 160, 89, 0.35);
     }
 
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    .btn-gold:active {
+      transform: scale(0.96);
     }
 
     .btn-outline {
-      border: 1px solid rgba(212, 175, 55, 0.5);
-      color: var(--gold-light);
-      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--gold-bright);
+      background: rgba(197, 160, 89, 0.05);
     }
 
-    .btn-outline:hover {
-      background: rgba(212, 175, 55, 0.1);
-      border-color: var(--gold);
-    }
-
-    /* Hero Section */
+    /* Video Hero Section */
     .hero {
       position: relative;
-      min-height: 85vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 3rem 1.5rem;
-      background: linear-gradient(180deg, rgba(13,14,17,0.3) 0%, var(--dark-bg) 100%),
-                  url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      padding: 7rem 1.2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.35) contrast(1.1);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(7, 8, 11, 0.4) 0%, var(--bg) 95%);
+      z-index: -1;
     }
 
     .hero-badge {
-      font-size: 0.8rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-bright);
+      border: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.6);
       padding: 0.4rem 1.2rem;
       border-radius: 50px;
-      background: rgba(0, 0, 0, 0.4);
-    }
-
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 400;
-      color: #fff;
-      max-width: 900px;
-      line-height: 1.2;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
 
+    .hero h1 {
+      font-size: clamp(2.4rem, 9vw, 4.6rem);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
     .hero h1 span {
-      font-style: italic;
-      color: var(--gold-light);
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
     }
 
     .hero p {
-      color: var(--text-muted);
       max-width: 600px;
-      font-size: 1.05rem;
-      margin-bottom: 2rem;
-      font-weight: 300;
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.2rem;
+      font-weight: 400;
     }
 
-    /* Menu Section */
-    .section-title {
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    @media (min-width: 640px) {
+      .hero-cta {
+        flex-direction: row;
+        max-width: 480px;
+      }
+    }
+
+    /* Grand Stats Counter Bar */
+    .stats-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 2.5rem 1rem;
+      gap: 1.5rem;
       text-align: center;
-      padding: 4rem 1rem 2rem;
     }
 
-    .section-title h2 {
-      font-family: var(--font-serif);
-      font-size: 2.8rem;
-      color: var(--gold-light);
+    @media (min-width: 768px) {
+      .stats-bar {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 3rem 6%;
+      }
+    }
+
+    .stat-box h3 {
+      font-size: 2.2rem;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-box p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Section Global */
+    .section {
+      padding: 5rem 1.2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header span {
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      display: block;
       margin-bottom: 0.5rem;
     }
 
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .section-header h2 {
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      color: var(--text);
     }
 
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      padding: 0 1rem;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-muted);
-      padding: 0.6rem 1.5rem;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 30px;
-      transition: all 0.3s;
-    }
-
-    .tab-btn.active, .tab-btn:hover {
-      border-color: var(--gold);
-      color: var(--gold-light);
-      background: rgba(212, 175, 55, 0.08);
-    }
-
-    .menu-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    /* VIP Amenities Section */
+    .amenities-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .amenities-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .amenity-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    .amenity-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .amenity-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .amenity-card h4 {
+      font-size: 1.2rem;
+      color: var(--gold-bright);
+      margin-bottom: 0.6rem;
+    }
+
+    .amenity-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Suites Grid */
+    .suites-grid {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 2rem;
     }
 
-    .menu-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(212, 175, 55, 0.15);
-      border-radius: 8px;
+    @media (min-width: 768px) {
+      .suites-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .suite-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
       overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    .menu-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(212, 175, 55, 0.5);
-    }
-
-    .menu-img {
-      height: 200px;
+    .suite-card img {
       width: 100%;
+      height: 250px;
       object-fit: cover;
+      display: block;
     }
 
-    .menu-info {
-      padding: 1.5rem;
+    .suite-body {
+      padding: 1.8rem;
     }
 
-    .menu-header {
+    .suite-body h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--gold-bright);
+    }
+
+    .suite-body p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Swipeable Tabs */
+    .tabs-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .tabs-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tabs-bar {
+      display: inline-flex;
+      gap: 0.8rem;
+      padding: 0 0.5rem;
+    }
+
+    .tab-item {
+      padding: 0.65rem 1.5rem;
+      border-radius: 50px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .tab-item.active {
+      background: var(--gold-gradient);
+      color: #000;
+      border-color: var(--gold);
+    }
+
+    /* Dishes Grid */
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+
+    @media (min-width: 650px) {
+      .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .dishes-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .dish-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dish-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .dish-info {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .dish-top {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       margin-bottom: 0.6rem;
+      gap: 0.5rem;
     }
 
-    .menu-header h3 {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
+    .dish-top h4 {
+      font-size: 1.15rem;
       color: #fff;
     }
 
-    .price {
-      font-family: var(--font-serif);
-      color: var(--gold);
-      font-size: 1.3rem;
-      font-weight: 700;
+    .dish-price {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      font-size: 1.25rem;
+      flex-shrink: 0;
     }
 
-    .menu-desc {
-      color: var(--text-muted);
+    .dish-info p {
       font-size: 0.85rem;
-      line-height: 1.5;
-      margin-bottom: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
     }
 
-    .order-action {
+    /* Bottom App Bar for Mobile */
+    .order-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(16, 18, 26, 0.98);
+      border-top: 1px solid var(--gold);
+      backdrop-filter: blur(20px);
+      padding: 0.9rem 1.4rem;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateY(120%);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1001;
+      box-shadow: 0 -8px 30px rgba(0,0,0,0.9);
     }
 
-    .btn-card-order {
-      color: var(--gold-light);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
+    .order-bar.show {
+      transform: translateY(0);
+    }
+
+    .order-summary-title {
+      font-size: 0.75rem;
+      color: var(--gold-bright);
       text-transform: uppercase;
       font-weight: 600;
-      border-bottom: 1px solid var(--gold);
-      padding-bottom: 2px;
-      transition: color 0.3s;
     }
 
-    .btn-card-order:hover {
+    .order-summary-total {
+      font-size: 1.25rem;
+      font-weight: 800;
       color: #fff;
     }
 
-    /* Floating Reservation Strip for 5-Star Experience */
-    .vip-strip {
-      background: linear-gradient(90deg, #121418, #1c1f26, #121418);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 12px;
-      max-width: 1000px;
-      margin: 5rem auto;
-      padding: 2.5rem;
-      text-align: center;
+    /* Responsive Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
     }
 
-    .vip-strip h3 {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      color: var(--gold-light);
-      margin-bottom: 0.8rem;
+    .modal-content {
+      background: var(--surface);
+      border: 1px solid var(--gold);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 440px;
+      padding: 2rem;
+      position: relative;
     }
 
-    .vip-strip p {
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 18px;
       color: var(--text-muted);
-      margin-bottom: 1.8rem;
-      font-size: 0.95rem;
+      font-size: 1.8rem;
+      cursor: pointer;
     }
 
-    /* Footer */
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      text-align: center;
-      padding: 2rem 1rem;
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+      display: block;
       font-size: 0.8rem;
       color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <nav>
-    <div class="brand">Grand Horizon</div>
-    <div class="nav-actions">
-      <!-- Direct Call -->
-      <a href="tel:+919876543210" class="btn btn-outline">Call Concierge</a>
-      <!-- WhatsApp Direct Booking -->
-      <a href="https://wa.me/919876543210?text=Hello%20Grand%20Horizon,%20I%20would%20like%20to%20reserve%20a%20table/suite." target="_blank" class="btn btn-gold">VIP Reservation</a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-badge">Est. 1998 • Five-Star Hospitality</div>
-    <h1>Indulge in <span>Timeless Elegance</span> & World-Class Culinary Art</h1>
-    <p>Experience artisanal cuisine curated by Michelin-awarded chefs in an opulent heritage setting.</p>
-    <div>
-      <a href="#menu" class="btn btn-gold">Explore The Menu</a>
+  <!-- Top Glass Header -->
+  <header>
+    <div class="brand">The Imperial</div>
+    <div class="header-actions">
+      <a href="tel:+919876543210" class="btn btn-outline">Call</a>
+      <button class="btn btn-gold" onclick="openModal()">Book VIP</button>
     </div>
   </header>
 
-  <!-- Menu Section -->
-  <section id="menu">
-    <div class="section-title">
-      <p>Culinary Masterpieces</p>
-      <h2>Chef's Curated Selection</h2>
+  <!-- Video Background Hero -->
+  <section class="hero">
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-luxury-resort-swimming-pool-and-deck-42517-large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-badge">Ultra-Luxury Global Sanctuary</div>
+    <h1>The Epitome of <span>Royal Grandeur</span></h1>
+    <p>Private heated infinity pools, 3-Star Michelin culinary artistry, and dedicated 24/7 personal butler service.</p>
+    
+    <div class="hero-cta">
+      <a href="#dining" class="btn btn-gold" style="padding: 0.9rem 1.6rem;">Explore Tasting Menu</a>
+      <button class="btn btn-outline" style="padding: 0.9rem 1.6rem;" onclick="openModal()">Reserve a Suite</button>
+    </div>
+  </section>
+
+  <!-- Live Stats Strip -->
+  <div class="stats-bar">
+    <div class="stat-box">
+      <h3>#1</h3>
+      <p>Luxury Resort 2026</p>
+    </div>
+    <div class="stat-box">
+      <h3>3★</h3>
+      <p>Michelin Dining</p>
+    </div>
+    <div class="stat-box">
+      <h3>24/7</h3>
+      <p>Royal Concierge</p>
+    </div>
+    <div class="stat-box">
+      <h3>100%</h3>
+      <p>Bespoke Privacy</p>
+    </div>
+  </div>
+
+  <!-- Palace Amenities Section -->
+  <section class="section">
+    <div class="section-header">
+      <span>Unrivaled Services</span>
+      <h2>Palace Privileges</h2>
     </div>
 
-    <!-- Filter Tabs (For demonstration) -->
-    <div class="tabs">
-      <button class="tab-btn active">Signature Dishes</button>
-      <button class="tab-btn">Degustation Menu</button>
-      <button class="tab-btn">Fine Spirits & Wine</button>
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <div class="amenity-icon">🚁</div>
+        <h4>Helipad & Chauffeur</h4>
+        <p>Direct private rooftop helipad arrival with Rolls-Royce airport transfers tailored on request.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🥂</div>
+        <h4>Sommelier Cellar</h4>
+        <p>Private tasting sessions featuring century-old grand crus and rare vintage cognac cellars.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">✨</div>
+        <h4>Royal Butler Guild</h4>
+        <p>Dedicated personal butler attending to every subtle requirement with discreet perfection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suites Section -->
+  <section class="section" id="suites" style="background: var(--surface); padding-top: 5rem; padding-bottom: 5rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-header">
+      <span>Accommodations</span>
+      <h2>Presidential Sanctuaries</h2>
     </div>
 
-    <div class="menu-container">
-      
+    <div class="suites-grid">
+      <div class="suite-card">
+        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80" alt="Presidential Suite">
+        <div class="suite-body">
+          <h3>The Maharaja Imperial Suite</h3>
+          <p>360° panoramic private terrace, 24K gold bath furnishings, Steinway grand piano, and in-suite spa suite.</p>
+          <button class="btn btn-outline" style="width: 100%; padding: 0.8rem;" onclick="openModal('The Maharaja Imperial Suite')">Request Suite Booking</button>
+        </div>
+      </div>
+
+      <div class="suite-card">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80" alt="Royal Villa">
+        <div class="suite-body">
+          <h3>Royal Horizon Lagoon Villa</h3>
+          <p>Suspended heated infinity plunge pool, isolated botanic garden, and on-call private culinary chef.</p>
+          <button class="btn btn-outline" style="width: 100%; padding: 0.8rem;" onclick="openModal('Royal Horizon Lagoon Villa')">Request Villa Booking</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Dining Section -->
+  <section class="section" id="dining" style="padding-bottom: 7rem;">
+    <div class="section-header">
+      <span>3-Star Michelin Kitchen</span>
+      <h2>Curated Gastronomy</h2>
+    </div>
+
+    <!-- Swipeable Tabs -->
+    <div class="tabs-wrapper">
+      <div class="tabs-bar">
+        <div class="tab-item active" onclick="filterDishes('all', this)">Full Tasting Menu</div>
+        <div class="tab-item" onclick="filterDishes('mains', this)">Signatures</div>
+        <div class="tab-item" onclick="filterDishes('desserts', this)">Artisan Desserts</div>
+        <div class="tab-item" onclick="filterDishes('cellar', this)">Private Cellar</div>
+      </div>
+    </div>
+
+    <!-- Dish Cards -->
+    <div class="dishes-grid">
       <!-- Dish 1 -->
-      <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Truffle Infused Steak" class="menu-img">
-        <div class="menu-info">
-          <div class="menu-header">
-            <h3>Black Truffle Filet Mignon</h3>
-            <div class="price">₹3,450</div>
+      <div class="dish-card" data-category="mains">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Tenderloin">
+        <div class="dish-info">
+          <div>
+            <div class="dish-top">
+              <h4>Périgord Truffle Mignon</h4>
+              <div class="dish-price">₹4,500</div>
+            </div>
+            <p>Seared prime fillet accompanied by French thyme butter, duxelles glaze, and authentic black truffle shavings.</p>
           </div>
-          <p class="menu-desc">Prime tenderloin seared with aromatic thyme butter, glazed with 25-year aged balsamic and fresh Périgord truffle shavings.</p>
-          <div class="order-action">
-            <a href="https://wa.me/919876543210?text=Order%20Inquiry:%20Black%20Truffle%20Filet%20Mignon" target="_blank" class="btn-card-order">Reserve Dish on WhatsApp →</a>
-          </div>
+          <button class="btn btn-outline" style="width: 100%;" onclick="addToOrder('Périgord Truffle Mignon', 4500)">+ Add to Dining Order</button>
         </div>
       </div>
 
       <!-- Dish 2 -->
-      <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Royal Saffron Lobster" class="menu-img">
-        <div class="menu-info">
-          <div class="menu-header">
-            <h3>Royal Saffron Lobster Thermidor</h3>
-            <div class="price">₹4,200</div>
+      <div class="dish-card" data-category="mains">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80" alt="Lobster">
+        <div class="dish-info">
+          <div>
+            <div class="dish-top">
+              <h4>Kashmiri Saffron Lobster</h4>
+              <div class="dish-price">₹5,200</div>
+            </div>
+            <p>Whole Atlantic rock lobster simmered in rich saffron velouté, finished with Gruyère cheese gratin.</p>
           </div>
-          <p class="menu-desc">Atlantic rock lobster flamed in French cognac, folded in rich Kashmiri saffron velouté and Gruyère cheese gratin.</p>
-          <div class="order-action">
-            <a href="https://wa.me/919876543210?text=Order%20Inquiry:%20Royal%20Saffron%20Lobster" target="_blank" class="btn-card-order">Reserve Dish on WhatsApp →</a>
-          </div>
+          <button class="btn btn-outline" style="width: 100%;" onclick="addToOrder('Saffron Lobster', 5200)">+ Add to Dining Order</button>
         </div>
       </div>
 
       <!-- Dish 3 -->
-      <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&q=80" alt="Gold Leaf Dessert" class="menu-img">
-        <div class="menu-info">
-          <div class="menu-header">
-            <h3>24K Gold Valrhona Soufflé</h3>
-            <div class="price">₹1,850</div>
+      <div class="dish-card" data-category="desserts">
+        <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80" alt="Gold Souffle">
+        <div class="dish-info">
+          <div>
+            <div class="dish-top">
+              <h4>24K Gold Valrhona Soufflé</h4>
+              <div class="dish-price">₹2,100</div>
+            </div>
+            <p>Single-origin Madagascar dark chocolate molten dessert crowned in authentic edible 24-karat gold foil.</p>
           </div>
-          <p class="menu-desc">70% single-origin dark chocolate molten centre garnished with edible 24-karat gold leaf and Madagascar vanilla gelato.</p>
-          <div class="order-action">
-            <a href="https://wa.me/919876543210?text=Order%20Inquiry:%2024K%20Gold%20Souffle" target="_blank" class="btn-card-order">Reserve Dish on WhatsApp →</a>
-          </div>
+          <button class="btn btn-outline" style="width: 100%;" onclick="addToOrder('24K Gold Soufflé', 2100)">+ Add to Dining Order</button>
         </div>
       </div>
 
+      <!-- Dish 4 -->
+      <div class="dish-card" data-category="cellar">
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Vintage Reserve">
+        <div class="dish-info">
+          <div>
+            <div class="dish-top">
+              <h4>Château Vintage 2010</h4>
+              <div class="dish-price">₹14,000</div>
+            </div>
+            <p>Exclusive cellar stock preserved in French oak barrels featuring complex notes of dark berries and smoke.</p>
+          </div>
+          <button class="btn btn-outline" style="width: 100%;" onclick="addToOrder('Château Vintage 2010', 14000)">+ Add to Dining Order</button>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- VIP Reservation Callout -->
-  <div class="vip-strip">
-    <h3>Private Dining & Suite Concierge</h3>
-    <p>Hosting distinguished guests or an intimate celebration? Let our head maître d'hôtel handle your seating arrangements personally.</p>
-    <a href="https://wa.me/919876543210?text=I%20am%20interested%20in%20booking%20a%20Private%20Dining%20Table." target="_blank" class="btn btn-gold">Direct WhatsApp Concierge</a>
+  <!-- Sticky Bottom Order Summary -->
+  <div class="order-bar" id="orderBar">
+    <div>
+      <div class="order-summary-title">Dining Bill (<span id="cartCount">0</span> Dishes)</div>
+      <div class="order-summary-total" id="cartTotal">₹0</div>
+    </div>
+    <div style="display: flex; gap: 0.6rem;">
+      <button class="btn btn-outline" style="padding: 0.5rem 0.8rem; font-size: 0.75rem;" onclick="resetCart()">Clear</button>
+      <button class="btn btn-gold" style="padding: 0.55rem 1.1rem; font-size: 0.8rem;" onclick="sendWhatsAppOrder()">Order on WhatsApp →</button>
+    </div>
   </div>
 
-  <footer>
-    <p>© 2026 The Grand Horizon Luxury Hotel & Suites. Designed with high-performance standards.</p>
-  </footer>
+  <!-- Reservation Modal -->
+  <div class="modal" id="resModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 style="margin-bottom: 0.3rem; color: var(--gold-bright); font-size: 1.4rem;">VIP Concierge</h3>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.2rem;">Complete your reservation via WhatsApp.</p>
+      
+      <div class="form-group">
+        <label>Guest Full Name</label>
+        <input type="text" id="custName" placeholder="e.g. Priyanshu Sharma">
+      </div>
+      <div class="form-group">
+        <label>Experience Choice</label>
+        <select id="serviceType">
+          <option>Private Dining Table (Michelin Chef)</option>
+          <option>The Maharaja Imperial Suite</option>
+          <option>Royal Horizon Lagoon Villa</option>
+          <option>Helipad / Chauffeur Service</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Reservation Date</label>
+        <input type="date" id="custDate">
+      </div>
+      <button class="btn btn-gold" style="width: 100%; padding: 0.85rem;" onclick="confirmBooking()">Confirm via WhatsApp</button>
+    </div>
+  </div>
 
+  <script>
+    // Tab Filter
+    function filterDishes(category, btn) {
+      document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.dish-card');
+      cards.forEach(card => {
+        if(category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Dynamic Cart System
+    let cart = [];
+    const phone = "919876543210"; // Apna WhatsApp Number yahan update karo
+
+    function addToOrder(name, price) {
+      cart.push({ name, price });
+      updateCartUI();
+    }
+
+    function resetCart() {
+      cart = [];
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const bar = document.getElementById('orderBar');
+      const count = document.getElementById('cartCount');
+      const total = document.getElementById('cartTotal');
+
+      if(cart.length > 0) {
+        bar.classList.add('show');
+        count.innerText = cart.length;
+        const sum = cart.reduce((acc, item) => acc + item.price, 0);
+        total.innerText = "₹" + sum.toLocaleString('en-IN');
+      } else {
+        bar.classList.remove('show');
+      }
+    }
+
+    function sendWhatsAppOrder() {
+      if(cart.length === 0) return;
+      let text = "Hello The Imperial Concierge, I would like to place an order:%0a";
+      cart.forEach((item, index) => {
+        text += `${index + 1}. ${item.name} - ₹${item.price}%0a`;
+      });
+      const sum = cart.reduce((acc, item) => acc + item.price, 0);
+      text += `%0a*Total Estimate: ₹${sum.toLocaleString('en-IN')}*`;
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    }
+
+    // Modal Operations
+    function openModal(defaultService = '') {
+      document.getElementById('resModal').style.display = 'flex';
+      if(defaultService) {
+        document.getElementById('serviceType').value = defaultService;
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('resModal').style.display = 'none';
+    }
+
+    function confirmBooking() {
+      const name = document.getElementById('custName').value || 'Guest';
+      const service = document.getElementById('serviceType').value;
+      const date = document.getElementById('custDate').value || 'Immediate';
+      
+      const msg = `Hello The Imperial,%0aI would like to book a VIP Reservation.%0a*Guest Name:* ${name}%0a*Selection:* ${service}%0a*Date:* ${date}`;
+      window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('resModal');
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
